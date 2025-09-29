@@ -257,4 +257,3 @@ class GameView(context: Context) : SurfaceView(context), SurfaceHolder.Callback 
         return Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true)
     }
 }
-

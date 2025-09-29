@@ -4,9 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+
     tools:context=".MainActivity">
 
-    <!-- Фоновое изображение, растянутое на весь экран -->
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="0dp"
@@ -18,7 +30,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Текст для отображения рекорда -->
     <TextView
         android:id="@+id/highScoreText"
         android:layout_width="wrap_content"
@@ -34,16 +45,15 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="High Score: 1234" />
 
-    <!-- Кнопка "PLAY" -->
     <Button
         android:id="@+id/playButton"
         android:layout_width="250dp"
         android:layout_height="80dp"
         android:background="@drawable/custom_button"
-        app:backgroundTint="@null"
         android:text="PLAY"
         android:textColor="@android:color/white"
         android:textSize="34sp"
+        app:backgroundTint="@null"
         app:layout_constraintBottom_toTopOf="@+id/skinSelectorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,8 +61,6 @@
         app:layout_constraintVertical_bias="0.8" />
 
 
-
-    <!-- Панель выбора скинов -->
     <LinearLayout
         android:id="@+id/skinSelectorLayout"
         android:layout_width="wrap_content"
@@ -65,15 +73,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <!-- Красный шарик (стандартный) -->
         <ImageView
             android:id="@+id/skinRed"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="8dp"
-            android:src="@drawable/balloon" /> <!-- ИЗМЕНЕНИЕ: было balloon_red -->
+            android:src="@drawable/balloon" />
 
-        <!-- Синий шарик -->
         <ImageView
             android:id="@+id/skinBlue"
             android:layout_width="60dp"
@@ -81,7 +87,6 @@
             android:layout_margin="8dp"
             android:src="@drawable/balloon_blue" />
 
-        <!-- Зеленый шарик -->
         <ImageView
             android:id="@+id/skinGreen"
             android:layout_width="60dp"
@@ -91,5 +96,10 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gameGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="background_image,highScoreText,playButton,skinSelectorLayout" />
+</androidx.constraintlayout.widget.ConstraintLayout>
